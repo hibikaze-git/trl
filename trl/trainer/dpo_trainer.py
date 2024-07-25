@@ -1283,6 +1283,8 @@ class DPOTrainer(Trainer):
         if self.aux_loss_enabled:
             model_kwargs["output_router_logits"] = True
 
+        model_kwargs["images"] = model_kwargs["pixel_values"]
+
         outputs = model(
             concatenated_batch["concatenated_input_ids"],
             attention_mask=concatenated_batch["concatenated_attention_mask"],
